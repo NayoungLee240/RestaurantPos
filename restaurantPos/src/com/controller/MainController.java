@@ -13,5 +13,12 @@ public class MainController {
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
 		return mv;
 	}
+	@RequestMapping("/tablehome.mc")
+	public ModelAndView tablehome() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "tablehome");
 
+		return mv;
+	}
 }

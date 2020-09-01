@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
 <section class="pb_cover_v1 cover-bg-black cover-bg-opacity-4 text-center" style="background-color: #fff5b9" id="section-home">
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
