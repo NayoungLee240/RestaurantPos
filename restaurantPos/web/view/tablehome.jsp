@@ -2,6 +2,22 @@
     pageEncoding="EUC-KR"%>
 
 <style>
+
+/*------whole div Start------ */
+#section-table-home{
+	padding-top: 150px;
+	height: 770px;
+}
+#section-table-home>div{
+	display:block;
+	margin:0 auto;
+}
+.row{
+	text-align: center;
+}
+/*------whole div end------ */
+
+/*------center div Start------ */
 .tablehomebtn{
 	font-size: 35px;
 	background-color: #e9856e;
@@ -12,42 +28,6 @@
 .tablehomebtn:hover{
 	background-color: #bc6754;
 	color: #d3cb98;
-}
-#section-table-home{
-	padding-top: 100px;
-	height: 770px;
-}
-#section-table-home>div{
-	display:block;
-	margin:0 auto;
-}
-.row{
-	text-align: center;
-}
-#callbtn{
-	display:block;
-	margin:70px;
-	background-color: #e9856e;
-	padding:10px;
-}
-#callbtn:hover{
-	background-color: #bc6754;
-}
-#callbtn>img{
-	width: 80px;
-}
-#orderdiv{
-	display: block;
-	background: white;
-	border: 2px solid gray;
-	height: 500px;
-	overflow: auto;
-}
-#orderlist{
-	display:block;
-}
-#orderdiv>h3{
-	padding: 5px;
 }
 
 #search{
@@ -66,7 +46,42 @@ h2{
 	border: 2px solid gray;
 	overflow: auto;
 }
+/*------center div end------ */
+
+/*------left div Start------ */
+#callbtn{
+	display:block;
+	margin:70px;
+	background-color: #e9856e;
+	padding:10px;
+}
+#callbtn:hover{
+	background-color: #bc6754;
+}
+#callbtn>img{
+	width: 80px;
+}
+/*------left div end------ */
+
+/*------right div Start------ */
+#orderdiv{
+	display: block;
+	background: white;
+	border: 2px solid gray;
+	height: 500px;
+	overflow: auto;
+}
+#orderlist{
+	display:block;
+}
+#orderdiv>h3{
+	padding: 5px;
+}
+/*------right div Start------ */
+
 </style>
+
+
 <section style="background-color: #fff5b9" id="section-table-home">
 	<div class="container">
 		<div class="row">
@@ -74,7 +89,7 @@ h2{
 				<a href="#" rol="button" id="callbtn"><img src="img/bell.png"></a>
 			</div>
 			<div class="col-sm" style="padding-top: 100px">
-				<p><a href="#" role="button" class="tablehomebtn" id="orderbtn">주문하기</a></p>
+				<p><a href="tableorder.mc" role="button" class="tablehomebtn" id="orderbtn">주문하기</a></p>
 				<p><a href="#" role="button" class="tablehomebtn" id="bullbtn">낙서하기</a></p>
 				<div id="search">
 					<h2 class="row"><input class="col-9" id="srch_i" type="text" name="srch"><button class="col-3" id="srch_b">검색</button></h2>

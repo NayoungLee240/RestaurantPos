@@ -21,4 +21,12 @@ public class MainController {
 
 		return mv;
 	}
+	@RequestMapping("/tableorder.mc")
+	public ModelAndView tableorder() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "tableorder");
+
+		return mv;
+	}
 }

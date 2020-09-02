@@ -51,10 +51,10 @@ nav{
 
     <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" style="background-color: #a06250" id="pb-navbar">
       
-      	<a id="backbutton">
+      	<a id="backbutton" href="javascript:history.back(-1)">
       		<img src="img/back.png">
       	</a>
-        <a><img src="img/weather/sunny.png"></a>
+        <a style="margin-left:15px"><img src="img/weather/sunny.png"></a>
         
       <div class="container">
         <a class="navbar-brand d-xl-none d-lg-none d-md-block d-sm-block" href="#">
