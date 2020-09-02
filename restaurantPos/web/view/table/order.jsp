@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 
 <style>
@@ -58,14 +58,6 @@
 }
 #right-div>#orderbtn{
 	display:block;
-	background: #e9856e;
-	padding:5px;
-	color:#fff5b9;
-	font-size: 30px;
-}
-#right-div>#orderbtn:hover{
-	background-color: #bc6754;
-	color: #d3cb98;
 }
 
 /*------right div end------ */
@@ -91,7 +83,7 @@
 				<h1>주문 목록</h1>
 				<div id="order-list"></div>
 				<h1>Total : <span>0</span> 원</h1>
-				<a type="button" id="orderbtn" href="tablereceipt.mc">주문하기</a>
+				<a type="button" id="orderbtn" href="tablereceipt.mc" class="custombtn">주문하기</a>
 			</div>
 		</div>
 	</div>

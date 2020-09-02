@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
@@ -41,6 +41,16 @@ nav>a>img{
 nav{
 	height:70px;
 }
+.custombtn{
+	background: #e9856e;
+	padding:5px;
+	color:#fff5b9;
+	font-size: 30px;
+}
+.custombtn:hover{
+	background-color: #bc6754;
+	color: #d3cb98;
+}
 </style>
 </head>
   
@@ -74,7 +84,7 @@ nav{
               </a>
             </li>
             <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablehome.mc">Table</a></li>
-            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="login.mc">Login</a></li>
+            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminlogin.mc">Login</a></li>
           </ul>
         </div>
       </div>

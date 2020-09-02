@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 
 <style>
@@ -18,16 +18,11 @@
 /*------whole div end------ */
 
 /*------center div Start------ */
-.tablehomebtn{
+.custombtn{
 	font-size: 35px;
-	background-color: #e9856e;
 	text-decoration:none;
 	display: block;
-	color: #fff5b9;
-}
-.tablehomebtn:hover{
-	background-color: #bc6754;
-	color: #d3cb98;
+	padding:0;
 }
 
 #search{
@@ -89,8 +84,8 @@ h2{
 				<a href="#" rol="button" id="callbtn"><img src="img/bell.png"></a>
 			</div>
 			<div class="col-sm-4" style="padding-top: 150px">
-				<p><a href="tableorder.mc" role="button" class="tablehomebtn" id="orderbtn">주문하기</a></p>
-				<p><a href="#" role="button" class="tablehomebtn" id="bullbtn">낙서하기</a></p>
+				<p><a href="tableorder.mc" role="button" class="custombtn" id="orderbtn">주문하기</a></p>
+				<p><a href="#" role="button" class="custombtn" id="bullbtn">낙서하기</a></p>
 				<div id="search">
 					<h2 class="row"><input class="col-9" id="srch_i" type="text" name="srch"><button class="col-3" id="srch_b">검색</button></h2>
 					<div id="srch_r"></div>
