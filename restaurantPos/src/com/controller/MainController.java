@@ -17,7 +17,7 @@ public class MainController {
 	public ModelAndView tablehome() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "tablehome");
+		mv.addObject("centerpage", "table/home");
 
 		return mv;
 	}
@@ -25,7 +25,15 @@ public class MainController {
 	public ModelAndView tableorder() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "tableorder");
+		mv.addObject("centerpage", "table/order");
+
+		return mv;
+	}
+	@RequestMapping("/tablereceipt.mc")
+	public ModelAndView tablereceipt() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "table/receipt");
 
 		return mv;
 	}

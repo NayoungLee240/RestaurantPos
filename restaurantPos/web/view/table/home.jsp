@@ -32,7 +32,7 @@
 
 #search{
 	display: block;
-	margin-top:100px;
+	margin-top:120px;
 }
 h2{
 	font-size: 22px;
@@ -82,13 +82,13 @@ h2{
 </style>
 
 
-<section style="background-color: #fff5b9" id="section-table-home">
+<section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">
 	<div class="container">
-		<div class="row">
-			<div class="col-sm" style="padding-top: 300px">
+		<div class="row align-items-center justify-content-center">
+			<div class="col-sm-4" style="padding-top: 430px">
 				<a href="#" rol="button" id="callbtn"><img src="img/bell.png"></a>
 			</div>
-			<div class="col-sm" style="padding-top: 100px">
+			<div class="col-sm-4" style="padding-top: 150px">
 				<p><a href="tableorder.mc" role="button" class="tablehomebtn" id="orderbtn">주문하기</a></p>
 				<p><a href="#" role="button" class="tablehomebtn" id="bullbtn">낙서하기</a></p>
 				<div id="search">
@@ -96,7 +96,7 @@ h2{
 					<div id="srch_r"></div>
 				</div>
 			</div>
-			<div class="col-sm">
+			<div class="col-sm-4"  style="padding-top: 50px">
 				<div id="orderdiv">
 					<h3>대기중 주문</h3>
 					<div id="orderlist">
@@ -105,11 +105,5 @@ h2{
 			</div>
 			
 		</div> 
-	 <!-- <div class="row align-items-center justify-content-center">
-			<div class="col-md-9  order-md-1">
-			    <p><a href="#section-contact" role="button" class="tablehomebtn">주문하기</a></p>
-				<p><a href="#section-contact" role="button" class="tablehomebtn">낙서하기</a></p>
-          	</div>  
-        </div>  -->
 	</div>
 </section>
