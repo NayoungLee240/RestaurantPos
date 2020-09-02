@@ -29,7 +29,7 @@
 	padding-top:10px;
 	padding-bottom: 0;
 }
-nav>a>img{
+#backbutton>img, .weather{
 	height: 40px;
 }
 #backbutton{
@@ -59,17 +59,23 @@ nav{
     <div class="probootstrap-loader"></div>
     <!-- END loader -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" style="background-color: #a06250" id="pb-navbar">
+    <nav class="navbar navbar-expand-xl navbar-dark pb_navbar pb_scrolled-light" style="background-color: #a06250" id="pb-navbar">
+      
+      <div class="container">
       
       	<a id="backbutton" href="javascript:history.back(-1)">
-      		<img src="img/back.png">
-      	</a>
-        <a style="margin-left:15px"><img src="img/weather/sunny.png"></a>
+      		<img src="img/back.png"></a>
+        <!-- <a style="margin-left:15px" id="weather"><img src="img/weather/sunny.png" id="weather"></a> -->
         
-      <div class="container">
-        <a class="navbar-brand d-xl-none d-lg-none d-md-block d-sm-block" href="#">
-          <img src="img/logo.png" alt="Instant Logo" class="light">
-          <img src="img/logo-dark.png" alt="Instant Logo" class="dark">
+        <a class="navbar-brand d-xl-none d-lg-block d-md-block d-sm-block" href="#">
+        	<div class="light"> 
+        		<img src="img/weather/sunny.png" class="weather">
+          		<img src="img/logo.png" alt="Instant Logo">
+          	</div>
+          	<div class="dark">
+        		<img src="img/weather/sunny.png" class="weather">
+          		<img src="img/logo-dark.png" alt="Instant Logo">
+          	</div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
@@ -77,10 +83,16 @@ nav{
         <div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="index.html"id="h">Home</a></li>
-            <li class="nav-item logo-center d-xl-block d-lg-block d-md-none d-sm-none d-none">
+            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
               <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
-                <img src="img/logo.png" alt="Instant Logo" class="light">
-                <img src="img/logo-dark.png" alt="Instant Logo" class="dark">
+                <div class="light"> 
+        		<img src="img/weather/sunny.png" class="weather">
+          		<img src="img/logo.png" alt="Instant Logo">
+          	</div>
+          	<div class="dark">
+        		<img src="img/weather/sunny.png" class="weather">
+          		<img src="img/logo-dark.png" alt="Instant Logo">
+          	</div>
               </a>
             </li>
             <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablehome.mc">Table</a></li>

@@ -54,4 +54,13 @@ public class MainController {
 
 		return mv;
 	}
+	@RequestMapping("/sales.mc")
+	public ModelAndView sales() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
+//		mv.addObject("centerpage", "admin/loginfail");
+		mv.addObject("centerpage", "admin/sales");
+
+		return mv;
+	}
 }
