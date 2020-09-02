@@ -49,7 +49,8 @@ public class MainController {
 	public ModelAndView loginimpl() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "admin/loginfail");
+//		mv.addObject("centerpage", "admin/loginfail");
+		mv.addObject("centerpage", "admin/home");
 
 		return mv;
 	}
