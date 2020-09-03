@@ -85,7 +85,7 @@ h2{
 			</div>
 			<div class="col-sm-4" style="padding-top: 150px">
 				<p><a href="tableorder.mc" role="button" class="custombtn" id="orderbtn">주문하기</a></p>
-				<p><a href="#" role="button" class="custombtn" id="bullbtn">낙서하기</a></p>
+				<p><a href="tablebull.mc" role="button" class="custombtn" id="bullbtn">낙서하기</a></p>
 				<div id="search">
 					<h2 class="row"><input class="col-9" id="srch_i" type="text" name="srch"><button class="col-3" id="srch_b">검색</button></h2>
 					<div id="srch_r"></div>

@@ -13,12 +13,9 @@
 h3{
 	margin-top:20px;
 }
-h1{
-	margin-top:50px;
-}
 </style>
 
-<section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-home">
+<section class="pb_section" style="background-color: #fff5b9" id="section-home">
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-sm-12" style="text-align: left">

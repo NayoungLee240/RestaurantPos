@@ -4,7 +4,6 @@
 <style>
 /*------center div Start------ */
 #center{
-	margin-top: 100px;
 	margin-bottom:15px;
 }
 #center>h1{
@@ -59,10 +58,10 @@ table td{
 /*------menu edit/add end------ */
 </style>
 
-<section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">
-	<div class="container" style="overflow: auto">
-		<div class="row align-items-center justify-content-center">
-			<div class="col-sm-11" id="center">
+<section class="pb_section" style="background-color: #fff5b9" id="section-table-order">
+	<div class="container align-items-center justify-content-center"" style="overflow: auto">
+		<div class="row">
+			<div class="col-sm-12" id="center">
 				<h1>메뉴</h1>
 				<div id="order">
 					<div id="cate" class="row">
