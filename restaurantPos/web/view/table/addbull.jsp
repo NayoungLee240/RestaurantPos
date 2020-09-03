@@ -8,7 +8,7 @@ input, textarea{
 	font-size: 20px;
 	padding: 0 10px;
 }
-#context{
+#content{
 	height: 400px;
 	text-align: 
 }
@@ -27,7 +27,7 @@ form{
 			<div class="col-sm-11" id="center">
 				<form action="savebull.mc">
 					<p><input type="text" name="title" placeholder="제목을 입력하세요."></p>
-					<p><textarea rows="10" name="context" placeholder="내용을 입력하세요." id="context"></textarea></p>
+					<p><textarea rows="10" name="content" placeholder="내용을 입력하세요." id="content"></textarea></p>
 					<input type="text" name="author" placeholder="익명">
 					<input type="submit" value="저 장" class="custombtn">
 				</form>
