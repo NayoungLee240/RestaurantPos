@@ -62,9 +62,24 @@ nav{
     <nav class="navbar navbar-expand-xl navbar-dark pb_navbar pb_scrolled-light" style="background-color: #a06250" id="pb-navbar">
       
       <div class="container">
-      
-      	<a id="backbutton" href="javascript:history.back(-1)">
-      		<img src="img/back.png"></a>
+      	<c:choose>
+      		<c:when test="${centerpage==null}"></c:when>
+      		<c:when test="${centerpage eq 'table/home'}"></c:when>
+      		<c:when test="${centerpage eq 'table/viewbull'}">
+      			<a id="backbutton" href="tablebull.mc">
+      				<img src="img/back.png"></a>
+      		</c:when>
+      		<c:when test="${centerpage eq 'table/bull'}">
+      			<a id="backbutton" href="tablehome.mc">
+      				<img src="img/back.png"></a>
+      		</c:when>
+      		<c:otherwise>
+      			<a id="backbutton" href="javascript:history.back(-1)">
+      				<img src="img/back.png"></a>
+      		</c:otherwise>
+      	</c:choose>
+      	
+      		
         <!-- <a style="margin-left:15px" id="weather"><img src="img/weather/sunny.png" id="weather"></a> -->
         
         <a class="navbar-brand d-xl-none d-lg-block d-md-block d-sm-block" href="#">

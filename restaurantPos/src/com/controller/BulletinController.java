@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biz.BulletinBiz;
 import com.frame.Biz;
 import com.vo.Bulletin;
 
@@ -54,11 +55,15 @@ public class BulletinController {
 		return mv;
 	}
 	@RequestMapping("/savebull.mc")
-	public ModelAndView savebull() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "table/viewbull");
-//추가
-		return mv;
+	public String savebull(Bulletin b) {
+		b.setTab_id("NULL");
+		b.setComment_id(0);
+		try {
+			biz.register(b);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:viewbull.mc?id="+b.getId();
 	}
 }

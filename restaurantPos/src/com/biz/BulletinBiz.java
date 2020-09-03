@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.dao.BulletinDao;
 import com.frame.Biz;
 import com.frame.Dao;
 import com.vo.Bulletin;
@@ -22,8 +22,7 @@ public class BulletinBiz implements Biz<Integer, Bulletin> {
 
 	@Override
 	public void register(Bulletin v) throws Exception {
-		dao.insert(v);
-		
+		dao.insert(v);	
 	}
 
 	@Override
@@ -59,8 +58,6 @@ public class BulletinBiz implements Biz<Integer, Bulletin> {
 	public ArrayList<Bulletin> search(Object obj) throws Exception {
 		return null;
 	}
-
-	
 	
 
 }

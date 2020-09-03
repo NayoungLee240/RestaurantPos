@@ -25,7 +25,7 @@ form{
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-sm-11" id="center">
-				<form action="savebull.mc">
+				<form enctype="multipart/form-data" action="savebull.mc" method="post">
 					<p><input type="text" name="title" placeholder="제목을 입력하세요."></p>
 					<p><textarea rows="10" name="content" placeholder="내용을 입력하세요." id="content"></textarea></p>
 					<input type="text" name="author" placeholder="익명">

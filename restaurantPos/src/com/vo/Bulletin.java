@@ -76,6 +76,13 @@ public class Bulletin {
 		this.author = author;
 		this.comment_id = comment_id;
 	}
+	//Ãß°¡
+	public Bulletin(String title, String content, String author) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.author = author;
+	}
 
 	public int getId() {
 		return id;
