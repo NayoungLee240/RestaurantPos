@@ -51,9 +51,9 @@ h1{
 				<div id="tables"></div>
 				<div id="menu" class="row align-items-center justify-content-center">
 					<a class="custombtn" href="sales.mc">매출 관리</a>
-					<a class="custombtn" href="#">메뉴 관리</a>
-					<a class="custombtn" href="#">테이블 관리</a>
-					<a class="custombtn" href="#">게시판 관리</a>
+					<a class="custombtn" href="menu.mc">메뉴 관리</a>
+					<a class="custombtn" href="table.mc">테이블 관리</a>
+					<a class="custombtn" href="bull.mc">게시판 관리</a>
 				</div>
 			</div>
 			<div class="col-md-3" style="padding-left:0">

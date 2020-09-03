@@ -63,4 +63,12 @@ public class MainController {
 
 		return mv;
 	}
+	@RequestMapping("/menu.mc")
+	public ModelAndView menu() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "admin/menu");
+
+		return mv;
+	}
 }
