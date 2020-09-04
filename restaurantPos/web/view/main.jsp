@@ -79,10 +79,7 @@ nav{
       		</c:otherwise>
       	</c:choose>
       	
-      		
-        <!-- <a style="margin-left:15px" id="weather"><img src="img/weather/sunny.png" id="weather"></a> -->
-        
-        <a class="navbar-brand d-xl-none d-lg-block d-md-block d-sm-block" href="#">
+      	<a class="navbar-brand d-xl-none d-lg-block d-md-block d-sm-block" href="#">
         	<div class="light"> 
         		<img src="img/weather/sunny.png" class="weather">
           		<img src="img/logo.png" alt="Instant Logo">
@@ -92,28 +89,78 @@ nav{
           		<img src="img/logo-dark.png" alt="Instant Logo">
           	</div>
         </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span><i class="ion-navicon"></i></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="index.html"id="h">Home</a></li>
-            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
-              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
-                <div class="light"> 
-        		<img src="img/weather/sunny.png" class="weather">
-          		<img src="img/logo.png" alt="Instant Logo">
-          	</div>
-          	<div class="dark">
-        		<img src="img/weather/sunny.png" class="weather">
-          		<img src="img/logo-dark.png" alt="Instant Logo">
-          	</div>
-              </a>
-            </li>
-            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablehome.mc">Table</a></li>
-            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminlogin.mc">Login</a></li>
-          </ul>
-        </div>
+			<span><i class="ion-navicon"></i></span>
+		</button>
+		
+      	<c:choose>
+      		<c:when test="${logintable == null }">
+      			<div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
+		          <ul class="navbar-nav">
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="index.html"id="h">Home</a></li>
+		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
+		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
+		                <div class="light"> 
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo.png" alt="Instant Logo">
+		          	</div>
+		          	<div class="dark">
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo-dark.png" alt="Instant Logo">
+		          	</div>
+		              </a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablelogin.mc">Table</a></li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminlogin.mc">Login</a></li>
+		          </ul>
+		        </div>
+      		</c:when>
+      		<c:when test="${logintable.admin_id == null }">
+		        <div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
+		          <ul class="navbar-nav">
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="index.html"id="h">Home</a></li>
+		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
+		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
+		                <div class="light"> 
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo.png" alt="Instant Logo">
+		          	</div>
+		          	<div class="dark">
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo-dark.png" alt="Instant Logo">
+		          	</div>
+		              </a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminhome.mc">My Restaurant</a></li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminlogout.mc">Logout</a></li>
+		          </ul>
+		        </div>
+      		</c:when>
+      		<c:otherwise>
+      			<div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
+		          <ul class="navbar-nav">
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="index.html"id="h">Home</a></li>
+		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
+		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
+		                <div class="light"> 
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo.png" alt="Instant Logo">
+		          	</div>
+		          	<div class="dark">
+		        		<img src="img/weather/sunny.png" class="weather">
+		          		<img src="img/logo-dark.png" alt="Instant Logo">
+		          	</div>
+		              </a>
+		            </li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablehome.mc">Order</a></li>
+		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablelogout.mc">Logout</a></li>
+		          </ul>
+		        </div>
+      		</c:otherwise>
+      	</c:choose>
+        
+        
       </div>
     </nav>
     <!-- END nav -->

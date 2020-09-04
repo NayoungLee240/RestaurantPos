@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectall" resultType="tab">
-		SELECT * FROM TAB
+		SELECT * FROM TAB WHERE ADMIN_ID IS NOT NULL
 	</select>
 	
 	<!-- <select id="search" parameterType="Integer" resultType="Integer">

@@ -22,7 +22,14 @@ public class MainController {
 
 		return mv;
 	}
-	
+	@RequestMapping("/adminhome.mc")
+	public ModelAndView adminhome() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "admin/home");
+
+		return mv;
+	}
 	@RequestMapping("/tablehome.mc")
 	public ModelAndView tablehome() {
 		ModelAndView mv = new ModelAndView();

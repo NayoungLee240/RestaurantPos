@@ -46,6 +46,17 @@ public class AdminController {
 
 		return mv;
 	}
+	@RequestMapping("/adminlogout.mc")
+	public ModelAndView tablelogout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		if(session!=null) {
+			session.invalidate();
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");
+		return mv;
+	}
 	@RequestMapping("/sales.mc")
 	public ModelAndView sales() {
 		ModelAndView mv = new ModelAndView();
