@@ -5,12 +5,14 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.vo.Bulletin" alias="bull"/>
+		<typeAlias type="com.vo.Tab" alias="tab"/>
 	<!-- <typeAlias type="com.vo.ShopVo" alias="shop"/>
 		<typeAlias type="com.vo.UserVo" alias="user"/> -->	
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/mybatis/bullmapper.xml"/>
+		<mapper resource="com/mybatis/tapmapper.xml"/>
 	<!-- 	<mapper resource="com/mybatis/shopmapper.xml"/>
 		<mapper resource="com/mybatis/usermapper.xml"/> -->
 	</mappers>

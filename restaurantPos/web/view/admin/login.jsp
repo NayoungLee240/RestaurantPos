@@ -36,7 +36,7 @@ h1{
 			<form action="loginimpl.mc" method="post">
 				<fieldset id="field">
 					<legend>Login</legend>
-					<p>ID  <input type="text" name="id" value="id01">
+					<p>ID  <input type="text" name="id" value="admin01">
 					<p>PWD  <input type="password" name="pwd" value="pwd01"><br></p>
 					<input type="submit" value="LOGIN" class="custombtn" id="login"><br>
 				</fieldset>

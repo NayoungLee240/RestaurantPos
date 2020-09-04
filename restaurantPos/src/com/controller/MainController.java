@@ -13,6 +13,16 @@ public class MainController {
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
 		return mv;
 	}
+
+	@RequestMapping("/adminlogin.mc")
+	public ModelAndView adminlogin() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
+		mv.addObject("centerpage", "admin/login");
+
+		return mv;
+	}
+	
 	@RequestMapping("/tablehome.mc")
 	public ModelAndView tablehome() {
 		ModelAndView mv = new ModelAndView();
@@ -38,48 +48,4 @@ public class MainController {
 		return mv;
 	}
 
-	
-	
-	@RequestMapping("/adminlogin.mc")
-	public ModelAndView adminlogin() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "admin/login");
-
-		return mv;
-	}
-	@RequestMapping("/loginimpl.mc")
-	public ModelAndView loginimpl() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-//		mv.addObject("centerpage", "admin/loginfail");
-		mv.addObject("centerpage", "admin/home");
-
-		return mv;
-	}
-	@RequestMapping("/sales.mc")
-	public ModelAndView sales() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-//		mv.addObject("centerpage", "admin/loginfail");
-		mv.addObject("centerpage", "admin/sales");
-
-		return mv;
-	}
-	@RequestMapping("/menu.mc")
-	public ModelAndView menu() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "admin/menu");
-
-		return mv;
-	}
-	@RequestMapping("/bull.mc")
-	public ModelAndView bull() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "admin/bull");
-
-		return mv;
-	}
 }
