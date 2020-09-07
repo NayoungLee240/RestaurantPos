@@ -31,8 +31,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<![CDATA[SELECT COUNT(*) FROM BULLETIN]]>
 	</select> -->
 	
-	<!--<select id="getid" resultType="Integer">
-		<![CDATA[SELECT BULLETIN_SEQ.CURRVAL FROM DUAL]]>
-	</select>-->
+	<select id="selectpage" parameterType="com.common.Pagination" resultType="bull">
+		<![CDATA[SELECT ID,TAB_ID,TITLE,CONTENT,AUTHOR,REGDATE,COMMENT_ID 
+		FROM ( SELECT ROW_NUMBER() OVER (ORDER BY REGDATE DESC) AS NUM, A.*
+			FROM BULLETIN A
+		 	ORDER BY REGDATE DESC)
+		WHERE NUM BETWEEN #{startList} AND (#{startList}+#{listSize}) ]]>
+	</select>
+	
+	<select id="getcnt" resultType="Integer">
+		SELECT COUNT(*) AS NUM FROM BULLETIN
+	</select>
 	
 </mapper>

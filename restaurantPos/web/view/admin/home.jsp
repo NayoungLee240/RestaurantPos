@@ -53,7 +53,7 @@ h1{
 					<a class="custombtn" href="sales.mc">매출 관리</a>
 					<a class="custombtn" href="menu.mc">메뉴 관리</a>
 					<a class="custombtn" href="table.mc">테이블 관리</a>
-					<a class="custombtn" href="bull.mc">게시판 관리</a>
+					<a class="custombtn" href="adminbull.mc">게시판 관리</a>
 				</div>
 			</div>
 			<div class="col-md-3" style="padding-left:0">

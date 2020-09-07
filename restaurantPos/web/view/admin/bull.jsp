@@ -25,29 +25,43 @@
 /*--------bull list div start----------*/
 #bull-list{
 	margin-top: 10px;
+	padding-top: 5px;
+	padding-left: 15px;
 	background: white;
 	border: 1px solid gray;
 	min-height: 400px;
 }
-#bull-list>a{
-	display: block;
+.bull-item{
+	display:block;
+}
+.bull-item>.item-value{
+	display: inline-block;
 	padding:5px 15px;
 	margin-bottom:5px;
 	background: #bffbdc;
 	text-decoration: none;
 }
-#bull-list>a:hover{
+.bull-item>.item-value:hover{
 	background: #8acba9;
 	color: black;
 }
-#bull-list>a>h3{
+.bull-item>.item-value>h3{
 	text-align: left;
 	margin:0;
 	margin-top: 5px;
 }
-#bull-list>a>p{
+.bull-item>.item-value>p{
 	text-align: right;
 	margin:0;
+}
+.bull-item>.custombtn{
+	display: inline-block, table-cell;
+	padding: 10px 15px;
+	margin:auto 0;
+	text-decoration: none;
+	text-align: center;
+	height: 40px;
+	vertical-align: text-bottom;
 }
 
 /*--------bull list div end----------*/
@@ -60,13 +74,13 @@
 /*--------paging div end----------*/
 </style>
 <script>
-//이전 버튼 이벤트
 
-function fn_prev(page, range, rangeSize) {
+	//이전 버튼 이벤트
+	function fn_prev(page, range, rangeSize) {
 
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
-		var url = "gettablebullList.mc";
+		var url = "getadminbullList.mc";
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 
@@ -77,7 +91,7 @@ function fn_prev(page, range, rangeSize) {
   //페이지 번호 클릭
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 
-		var url = "gettablebullList.mc";
+		var url = "getadminbullList.mc";
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		location.href = url;	
@@ -88,11 +102,20 @@ function fn_prev(page, range, rangeSize) {
 
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;
-		var url = "gettablebullList.mc";
+		var url = "getadminbullList.mc";
 
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 
+		location.href = url;
+	}
+	
+	//삭제 버튼 이벤트
+	function fn_del(id, page, range) {
+		var url="deletebull.mc";
+		url = url + "?id=" + id;
+		url = url + "&page=" + page;
+		url = url + "&range=" + range;
 		location.href = url;
 	}
 
@@ -106,8 +129,10 @@ function fn_prev(page, range, rangeSize) {
 				<div id="bull-list">
 					<c:forEach var="b" items="${bulllist }">
 						<fmt:formatDate var="dateTmp" pattern="yyyy/MM/dd HH:mm:ss" value="${b.regdate }"/>
-						<a href="viewbull.mc?id=${b.id }"><h3>${b.title }</h3><p>작성자 ${b.author }  | ${dateTmp }</p>
+						<div class="row bull-item"><a class="col-sm-11 item-value" href="viewbull.mc?id=${b.id }"><h3>${b.title }</h3><p>작성자 ${b.author }  | ${dateTmp }</p>
 						</a>
+						<a class="col-sm-1 custombtn" href="#" onclick="fn_del('${b.id }','${pagination.page}','${pagination.range }')">del</a>
+						</div>
 					</c:forEach>
 
 				</div>
