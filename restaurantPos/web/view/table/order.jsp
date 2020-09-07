@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <style>
 
@@ -63,6 +66,200 @@
 /*------right div end------ */
 
 </style>
+
+<script>
+	var menulist = new Array();
+	var datanum = 0;
+	var valuenum = 0;
+
+	/* 주문하기 버튼 클릭시 RECEIPT 데이터 요청 */
+	function reciptlist() {
+		$.ajax({
+			type : "POST",
+			url : 'orderreceipt.mc',
+			dataType : "text",
+			data : JSON.stringify(menulist),
+			contentType : 'application/json; charset=UTF-8',
+			async : false,
+			success : function(data) {
+				alert("주문이 완료되었습니다.");
+			},
+			error : function(request, status, error) {
+				console.log("AJAX_ERROR");
+			}
+		});
+	};
+
+
+	/*MenuController에 메뉴 리스트 정보 받기*/
+	function sendData(id) {
+		$.ajax({
+			url : 'menulist.mc',
+			async : false,
+			dataType : "json",
+			data : {
+				id : id
+			},
+			success : function(result) {
+				display(result);
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert(errorThrown);
+				alert(textStatus);
+			}
+		});
+	};
+
+	/*MenuController에 메뉴 리스트 정보 받은거 화면에 표시하기*/
+	function display(datas) {
+		$('#menu').empty();
+		$(datas)
+				.each(
+						function(index, menu) {
+							var result = '';
+							result += '<h3 id="'+menu.id+'"> <a type="button" href="javascript:void(0);" num ="';
+							result += menu.id + '">';
+							result += '<img src="img/foods/' + menu.img1 + ' "></a><br>';
+							result += menu.name + ',  가격 = ' + menu.price;
+							result += '</h3>';
+							$('#menu').append(result);
+
+						});
+		/*메뉴 리스트 사진 누르면 order 리스트로 입력되게 하는 함수 시작*/
+		orderready();
+	};
+	
+
+	/* 주문목록 해당 열 삭제, 총합계금액 빼기 dispalyorder Button에서 실행 */
+	function deleteRow(ths) {
+
+		var $ths = $(ths);
+		$ths.parents("h3").remove();
+
+		var price = $(ths).attr('name');
+		var deletenum = $(ths).attr('num');
+		var qt = $(ths).attr('value');
+
+		var total = Number(price) * Number(qt);
+
+		menulist.splice(deletenum, 1); // 삭제되는 열의 해당하는 menulist 삭제
+		datanum--;
+		deletetotal = $('#right-div > h1 > span').html() - total;
+		$('#right-div > h1 > span').html(deletetotal);
+	}
+
+	
+	/*+ - 수량 조절 및 총 금액 변경 */
+	function change(num, id) {
+
+		var x = (document.getElementById("qtcount" + id).value);
+		var y = (Number(x) + Number(num));
+
+		var z = $("#delete" + id).attr('value'); //버튼값에도 value 추가 total 계산을 위하여
+		var bz = (Number(z) + Number(num));
+
+		var i = $("#delete" + id).attr('num'); // menulist tsale = 판매수량 체크하기 위해 
+
+		if (y >= 1) {
+			document.getElementById("qtcount" + id).value = y;
+			$("#delete" + id).attr('value', bz);
+
+			menulist[i].tsales = y; // 해당 메뉴의 tsales 값 변경 = 판매수량
+
+			var delqt = $('#qtcount' + id).attr('name');
+			deleteqt = Number($('#right-div > h1 > span').html())
+					+ Number(delqt) * Number(num);
+			$('#right-div > h1 > span').html(deleteqt);
+
+		} else {
+			document.getElementById("qtcount" + id).value = 1;
+			$('#plus' + id).attr('value') = 1;
+			menulist[i].tsales = 1;
+		}
+		;
+	};
+	
+
+	/*이미지 선택한 개체 주문목록란에 표시*/
+
+	function displayorder(datas) {
+
+		$(datas).each(function(index, menu) {
+			function total() {
+				var total = '';
+				total = Number(menu.price)
+						+ Number($('#right-div > h1 > span')
+								.html());
+				$('#right-div > h1 > span').html(total);
+			}
+			;
+			
+			
+			// 중복 있는지 검색
+			for ( var i in menulist) {
+				if (menu.name != menulist[i].name) {
+				
+				} else {
+					alert("이미 선택하신 메뉴입니다..")
+					return displayorder();
+				}
+			};
+			
+			menulist.push(menu);
+			menulist[datanum].tsales = 1;
+	
+			var result = '';
+			result += '<h3 id="'+menu.id+'">';
+			result += menu.name + '  ' + menu.price;
+	
+			result += '<button type="button" onclick="change(1,' + menu.id + ');" id="plus'+ menu.id + '" value="1" ">+</button>'
+			result += '<input type="text" num ="'+datanum+'" id="qtcount'+menu.id+'" value="1" size = 1 name ="'+menu.price+'">'
+			result += '<button type="button" onclick="change(-1,' + menu.id + ');" id="minus' + menu.id + '">-</button>'
+	
+			result += '<button type="button" num ="' + datanum + '" id="delete' + menu.id + '" value="1" name="' + menu.price + '" onclick = "deleteRow(this);">X</button>';
+			result += '</h3>';
+	
+			datanum++;
+			valuenum++;
+			
+			$('#order-list').append(result);
+			
+			var price = '';
+			price += parseInt(menu.price);
+			total();
+		});
+	};
+
+	
+	/*주문목록에  display에서 이미지 클릭하면 Id 값이 넘어온다 데이터 가지고옴*/
+	function orderlist(id) {
+		$.ajax({
+			url : 'orderlist.mc',
+			async : false,
+			dataType : "json",
+			data : {
+				id : id
+			},
+			success : function(result) {
+				displayorder(result);
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert(errorThrown);
+				alert(textStatus);
+			}
+		});
+	};
+
+	
+	/*메뉴목록에서 (display)  메뉴가지고오면 이미지 클릭에 대한 함수 실행준비*/
+	function orderready() {
+		$('#menu > h3 > a').click(function() {
+			var num = $(this).attr("num");
+			orderlist(num);
+		});
+	};
+</script>
+
 <section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
@@ -70,10 +267,10 @@
 				<h1>주문하기</h1>
 				<div id="order">
 					<div id="cate" class="row">
-						<a class="col-sm-3" type="button" id="cate-food" href="#">식사</a>
-						<a class="col-sm-3" type="button" id="cate-fruit" href="#">과일</a>
-						<a class="col-sm-3" type="button" id="cate-anju" href="#">안주</a>
-						<a class="col-sm-3" type="button" id="cate-drink" href="#">음료</a>
+						<a class="col-sm-3" type="button" id="cate-food" href="javascript:void(0)" onclick="sendData(1)">전류</a>
+						<a class="col-sm-3" type="button" id="cate-fruit" href="javascript:void(0)" onclick="sendData(2)">안주류</a>
+						<a class="col-sm-3" type="button" id="cate-anju" href="javascript:void(0)" onclick="sendData(3)">탕류</a>
+						<a class="col-sm-3" type="button" id="cate-drink" href="javascript:void(0)" onclick="sendData(4)">주류</a>
 					</div>
 					<div id="menu">			
 					</div>
@@ -83,7 +280,7 @@
 				<h1>주문 목록</h1>
 				<div id="order-list"></div>
 				<h1>Total : <span>0</span> 원</h1>
-				<a type="button" id="orderbtn" href="tablereceipt.mc" class="custombtn">주문하기</a>
+				<a type="button" id="orderbtn" href="tablereceipt.mc" onclick="reciptlist()" class="custombtn">주문하기</a>
 			</div>
 		</div>
 	</div>

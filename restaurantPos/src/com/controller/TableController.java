@@ -47,6 +47,7 @@ public class TableController {
 			table = tabbiz.get(id);
 			HttpSession session = request.getSession();
 			session.setAttribute("logintable", table);
+			session.setAttribute("tableId", table.getId());  
 			
 		} catch (Exception e) {
 			e.printStackTrace();

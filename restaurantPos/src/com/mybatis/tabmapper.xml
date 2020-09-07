@@ -24,12 +24,4 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM TAB WHERE ADMIN_ID IS NOT NULL
 	</select>
 	
-	<!-- <select id="search" parameterType="Integer" resultType="Integer">
-		<![CDATA[SELECT COUNT(*) FROM BULLETIN]]>
-	</select> -->
-	
-	<!--<select id="getid" resultType="Integer">
-		<![CDATA[SELECT BULLETIN_SEQ.CURRVAL FROM DUAL]]>
-	</select>-->
-	
 </mapper>

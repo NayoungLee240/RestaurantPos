@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <style>
 
@@ -75,7 +76,39 @@ h2{
 /*------right div Start------ */
 
 </style>
+<script>
 
+	// 주문목록 출력
+function display(datas){
+
+	$(datas).each(function(index,menu){
+		var result = '';
+		result += '<h3> '+menu.menu_id + '  ' + menu.qt+'개 </h3>';
+		
+		$('#orderdiv').append(result);
+ });
+};
+
+
+	// 사용자 주문목록 데이터 가지고와서 출력
+$(document).ready(function(){
+
+	$.ajax({
+		url:'waitinglist.mc',
+		async:false,
+		dataType:"json",
+		success:function(result){
+			display(result);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(errorThrown);
+			alert(textStatus);
+
+		}
+	});
+});
+
+</script>
 
 <section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">
 	<div class="container">

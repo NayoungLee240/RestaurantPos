@@ -1,12 +1,10 @@
 package com.vo;
 
-import java.util.Date;
-
 public class Receipt {
 
 	private String id;
 	private String tab_id;
-	private Date regdate;
+	private String regdate;
 	private int payment;
 	private int total;
 
@@ -21,7 +19,7 @@ public class Receipt {
 		this.payment = payment;
 		this.total = total;
 	}
-	public Receipt(String id, String tab_id, Date regdate, int payment, int total) {
+	public Receipt(String id, String tab_id, String regdate, int payment, int total) {
 		super();
 		this.id = id;
 		this.tab_id = tab_id;
@@ -29,9 +27,18 @@ public class Receipt {
 		this.payment = payment;
 		this.total = total;
 	}
+	
+	public Receipt(String tab_id, int payment, int total) {
+		super();
+		this.tab_id = tab_id;
+		this.payment = payment;
+		this.total = total;
+	}
+	
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -41,10 +48,10 @@ public class Receipt {
 	public void setTab_id(String tab_id) {
 		this.tab_id = tab_id;
 	}
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	public int getPayment() {
@@ -64,7 +71,6 @@ public class Receipt {
 		return "Receipt [id=" + id + ", tab_id=" + tab_id + ", regdate=" + regdate + ", payment=" + payment + ", total="
 				+ total + "]";
 	}
-	
 	
 	
 }

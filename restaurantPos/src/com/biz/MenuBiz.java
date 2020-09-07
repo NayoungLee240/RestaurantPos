@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.dao.MenuDao;
 import com.frame.Biz;
 import com.frame.Dao;
 import com.vo.Menu;
@@ -62,6 +62,12 @@ public class MenuBiz implements Biz<String, Menu> {
 		return null;
 	}
 
+	@Resource(name = "menudao")
+	MenuDao menudao;
+
+	public ArrayList<Menu> getmenulist(String k) throws Exception {
+		return menudao.getmenulist(k);
+	}
 
 
 }

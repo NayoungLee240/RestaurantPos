@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style>
 
 h1{
@@ -42,6 +42,83 @@ h1{
 /*--------order list table end----------*/
 
 </style>
+<script>
+
+	// 우측 주문목록 데이터를 함께 사용하여 Table div 영역에 출력. 주문목록 데이터 삭제시 함께 연동됨.
+	function dispalytable(datas){
+		$(datas).each(function(index,menu){
+
+				var result = '';
+					result += '<h3> '+menu.menu_id+' '+menu.qt+' <h3> '
+					$('#tables > #'+menu.receipt_id+'').append(result);	
+		});
+	};
+
+
+	// 우측 주문목록에 데이터 세팅  
+	function display(datas) {
+		$(datas).each(
+				function(index, menu) {
+					var result = '';
+					result += '<tr id=' + menu.id + ' onclick="delwaiting(this.id)"> <td> '
+							+ menu.receipt_id + '</td>';
+					result += '<td> ' + menu.menu_id + '</td>';
+					result += '<td> ' + menu.qt + '</td> </tr>';
+
+					$('#list-table > tbody').append(result);
+				});
+	};
+
+	
+	// 주문대기목록 출력
+	function delwaiting(data) {
+		var result = confirm('대기목록에서 지우시겠습니까?');
+		if (result) {
+			$.ajax({
+				url : 'waitingdeladmin.mc',
+				async : false,
+				data : {id:data},
+				success : function(result) {
+					if(result){
+						alert("삭제되었습니다.");
+						location.reload();
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert(errorThrown);
+					alert(textStatus);
+				}
+			});
+		} else {
+
+		}
+		;
+
+	};
+	
+	// ajax로 주문목록 데이터 요청 sales 데이터 menucontroller에 있음.
+	function listwaiting(){
+		$.ajax({
+			url : 'waitinglistadmin.mc',
+			async : false,
+			dataType : "json",
+			success : function(result) {
+				display(result);
+				dispalytable(result);
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert(errorThrown);
+				alert(textStatus);
+
+			}
+		});
+	}
+	
+	// 화면 켜지자마자 데이터 요청 시작
+	$(document).ready(function() {
+		listwaiting();
+	});
+</script>
 
 <section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">
 	<div class="container">
@@ -69,11 +146,6 @@ h1{
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>0</td>
-								<td>샘플</td>
-								<td>1</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>

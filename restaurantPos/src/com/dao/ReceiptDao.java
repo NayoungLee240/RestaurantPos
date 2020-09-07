@@ -8,5 +8,5 @@ import com.vo.Receipt;
 
 @Repository("receiptdao")
 public interface ReceiptDao extends Dao<String, Receipt> {
-
+	public String getreceiptid () throws Exception;
 }

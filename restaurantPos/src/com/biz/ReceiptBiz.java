@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.dao.ReceiptDao;
 import com.frame.Biz;
 import com.frame.Dao;
 import com.vo.Receipt;
@@ -61,7 +61,13 @@ public class ReceiptBiz implements Biz<String, Receipt> {
 		return null;
 	}
 
-	
+	@Resource(name = "receiptdao")
+	ReceiptDao receiptdao;
+
+	public String getreceiptid() throws Exception {
+		return receiptdao.getreceiptid();
+	}
+
 
 
 }

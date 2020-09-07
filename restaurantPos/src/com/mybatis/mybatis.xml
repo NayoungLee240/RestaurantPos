@@ -6,15 +6,17 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.vo.Bulletin" alias="bull"/>
 		<typeAlias type="com.vo.Tab" alias="tab"/>
-	<!-- <typeAlias type="com.vo.ShopVo" alias="shop"/>
-		<typeAlias type="com.vo.UserVo" alias="user"/> -->	
+		<typeAlias type="com.vo.Menu" alias="menu"/>
+	    <typeAlias type="com.vo.Receipt" alias="receipt"/>
+	    <typeAlias type="com.vo.Sales" alias="sales"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/mybatis/bullmapper.xml"/>
-		<mapper resource="com/mybatis/tapmapper.xml"/>
-	<!-- 	<mapper resource="com/mybatis/shopmapper.xml"/>
-		<mapper resource="com/mybatis/usermapper.xml"/> -->
+		<mapper resource="com/mybatis/receiptmapper.xml"/> 
+		<mapper resource="com/mybatis/salesmapper.xml"/> 
+		<mapper resource="com/mybatis/tabmapper.xml"/> 
+		<mapper resource="com/mybatis/menumapper.xml"/> 
 	</mappers>
 </configuration>
 
