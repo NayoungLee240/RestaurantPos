@@ -140,8 +140,8 @@
 							var result = '';
 							result += '<h3 id="'+menu.id+'"> <a type="button" href="javascript:void(0);" num ="';
 							result += menu.id + '">';
-							result += '<img src="img/foods/' + menu.img1 + ' "></a><br>';
-							result += menu.name + ', ' + menu.price+'¿ø';
+							result += '<img src="img/foods/' + menu.img1 + ' "><br>';
+							result += menu.name + ', ' + menu.price+'¿ø</a>';
 							result += '</h3>';
 							$('#menu').append(result);
 

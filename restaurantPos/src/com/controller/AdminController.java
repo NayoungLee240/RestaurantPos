@@ -82,4 +82,8 @@ public class AdminController {
 
 		return mv;
 	}
+	@RequestMapping("/table.mc")
+	public String table() {
+		return "redirect:tabledata.mc";
+	}
 }

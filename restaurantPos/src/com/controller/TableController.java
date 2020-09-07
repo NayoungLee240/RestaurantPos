@@ -67,4 +67,51 @@ public class TableController {
 
 		return "redirect:tablelogin.mc";
 	}
+	@RequestMapping("/tabledata.mc")
+	public ModelAndView table() {
+		
+		ArrayList<Tab> list = null;
+		
+		try {
+			list = tabbiz.get();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+		mv.addObject("tabledatas", list);
+		mv.addObject("centerpage", "admin/table");
+
+		return mv;
+	}
+	@RequestMapping("edittable.mc")
+	public String edittable(Tab tab) {
+		System.out.println(tab);
+		if(tab.getAdmin_id()==null||tab.getAdmin_id().equals("")) {
+			return "redirect:adminlogin.mc";
+		}
+		try {
+			tabbiz.modify(tab);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:tabledata.mc";
+	}
+	@RequestMapping("addtable.mc")
+	public String addtable(Tab tab) {
+		System.out.println(tab);
+		if(tab.getAdmin_id()==null||tab.getAdmin_id().equals("")) {
+			return "redirect:adminlogin.mc";
+		}
+		try {
+			tabbiz.register(tab);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:tabledata.mc";
+	}
 }
