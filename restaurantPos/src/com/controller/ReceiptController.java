@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.ReceiptDao;
 import com.dao.SalesDao;
@@ -28,112 +29,93 @@ import com.vo.Sales;
 @Controller
 public class ReceiptController {
 
-
-	
 	@Resource(name = "receiptbiz")
 	Biz<String, Receipt> biz;
-	
+
 	@Resource(name = "salesbiz")
 	Biz<String, Sales> sbiz;
 
-	
 	@Autowired
 	ReceiptDao receiptbiz;
-	
+
 	@Autowired
 	SalesDao salesbiz;
-	
-	
-	
-	
-	        // 주문하기 눌렀을시 데이터값을 JSON 형식으로 가지고옴  여기서 SALES, RECEIPT 오라클데이터에 동시에 입력
-	@RequestMapping("/orderreceipt")
+
+	// 주문하기 눌렀을시 데이터값을 JSON 형식으로 가지고옴 여기서 SALES, RECEIPT 오라클데이터에 동시에 입력
+	@RequestMapping("/orderreceipt.mc")
 	@ResponseBody
-	public List<Receipt> tablereceipt(@RequestBody List<Map> arrAnlys, HttpServletRequest request){
+	public void tablereceipt(@RequestBody List<Map<String, Object>> arrAnlys, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String table_name = (String) session.getAttribute("tableId");
-	    List order = arrAnlys;
-	    List<Map<String, Object>> listMap = order;  
+		List<Map<String, Object>> listMap = arrAnlys;
+		ArrayList<Sales> saleslist = new ArrayList<Sales>();
 
-	    int total = 0;
-	    for(int i=0; i < listMap.size(); i++) {
-		    String id = listMap.get(i).get("id").toString(); 
-		    String price = listMap.get(i).get("price").toString(); 
-		    String name = listMap.get(i).get("name").toString(); 
-		    String tsales = listMap.get(i).get("tsales").toString(); 
-		    String category = listMap.get(i).get("category").toString(); 
-		    int payment = 1;
-		    int intprice = Integer.parseInt(price);
-		    int intqt = Integer.parseInt(tsales);
-		    int qttotal = intprice*intqt ;
-		    total += qttotal;
-		    
-		    Sales sales = new Sales(name, table_name, intqt, 1, intprice);
-		    try {
-				salesbiz.insert(sales);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    
-	    };
-	    int payment= 1;
-	    Receipt receipt = new Receipt(table_name,payment,total);
-	    try {
+		int total = 0;
+		for (int i = 0; i < listMap.size(); i++) {
+			String id = listMap.get(i).get("id").toString();
+			String price = listMap.get(i).get("price").toString();
+			String name = listMap.get(i).get("name").toString();
+			String tsales = listMap.get(i).get("tsales").toString();
+			String category = listMap.get(i).get("category").toString();
+			int payment = 1;
+			int intprice = Integer.parseInt(price);
+			int intqt = Integer.parseInt(tsales);
+			int qttotal = intprice * intqt;
+			total += qttotal;
+
+			saleslist.add(new Sales(name, table_name, null, intqt, 1, intprice));
+			
+		}
+		int payment = 1;
+		Receipt receipt = new Receipt(table_name, payment, total);
+		try {
 			biz.register(receipt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	    
-	    List<Receipt> anlysList = new ArrayList<Receipt>();
-	    return anlysList;
-		
-	};
+		for(Sales s: saleslist) {
+			s.setReceipt_id(receipt.getId());
+			try {
+				salesbiz.insert(s);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
-	
-	// RECEIPT 데이터 출력 Nextval, Currval 을 이용해서 현재 시퀀스값을 가져오기때문에 intreceiptid getreceiptid 사용
-	@RequestMapping("/receiptlists")
-	public void receiptlist(HttpServletRequest request ,HttpServletResponse response) {
+	}
+
+	// RECEIPT 데이터 출력 Nextval, Currval 을 이용해서 현재 시퀀스값을 가져오기때문에 intreceiptid
+	// getreceiptid 사용
+	@RequestMapping("/receiptlists.mc")
+	public ModelAndView receiptlist(HttpServletRequest request, HttpServletResponse response) {
 		Receipt receipt = new Receipt();
 		String receiptid = null;
 		int intreceiptid = 0;
 		String getreceiptid = null;
-		ArrayList<Receipt> list = null;
+		ArrayList<Sales> list = null;
 		try {
 			receiptid = receiptbiz.getreceiptid();
-			
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		intreceiptid = Integer.parseInt(receiptid)-1;
+		intreceiptid = Integer.parseInt(receiptid) - 1;
 		getreceiptid = Integer.toString(intreceiptid);
-	
+
 		try {
 			receipt = biz.get(getreceiptid);
+			list = salesbiz.search(getreceiptid);
 		} catch (Exception e) {
-	
 			e.printStackTrace();
-		};
-		
-		JSONArray ja = new JSONArray();	
-		JSONObject obj = new JSONObject();
+		}
 
-		obj.put("id", receipt.getId());
-		obj.put("tab_id", receipt.getTab_id());
-		obj.put("regdate", receipt.getRegdate());
-		obj.put("payment", receipt.getPayment());
-		obj.put("total", receipt.getTotal());
-		
-	response.setContentType("text/json;charset=utf-8");
-	PrintWriter out;
-	try {
-		out = response.getWriter();
-		out.print(obj.toJSONString());
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}	
-	};
+		HttpSession session = request.getSession();
+		session.setAttribute("receiptdata", receipt);
+		session.setAttribute("saleslist", list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+//		mv.addObject("receipttest",receipt);
+		mv.addObject("centerpage", "table/receipt");
+		return mv;
+	}
 
-
-};
-
+}

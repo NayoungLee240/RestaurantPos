@@ -62,9 +62,30 @@
 #right-div>#orderbtn{
 	display:block;
 }
-
+#order-list{
+	text-align: right;
+	padding:5px;
+}
+#odrder-list>h3{
+	margin-top: 0;
+	padding-top:5px;
+}
+#order-list>h3>.custombtn{
+	border:0;
+	padding:0 5px;
+	margin: 2px;
+}
 /*------right div end------ */
-
+#menu>h3{
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+	border:1px solid gray;
+	text-align: center;
+}
+#menu>h3>a>img{
+	height: 180px;
+}
 </style>
 
 <script>
@@ -120,7 +141,7 @@
 							result += '<h3 id="'+menu.id+'"> <a type="button" href="javascript:void(0);" num ="';
 							result += menu.id + '">';
 							result += '<img src="img/foods/' + menu.img1 + ' "></a><br>';
-							result += menu.name + ',  °¡°Ý = ' + menu.price;
+							result += menu.name + ', ' + menu.price+'¿ø';
 							result += '</h3>';
 							$('#menu').append(result);
 
@@ -210,13 +231,13 @@
 	
 			var result = '';
 			result += '<h3 id="'+menu.id+'">';
-			result += menu.name + '  ' + menu.price;
+			result += menu.name + '  ' + menu.price+' ';
 	
-			result += '<button type="button" onclick="change(1,' + menu.id + ');" id="plus'+ menu.id + '" value="1" ">+</button>'
+			result += '<button type="button" class="custombtn" onclick="change(1,' + menu.id + ');" id="plus'+ menu.id + '" value="1" ">+</button>'
 			result += '<input type="text" num ="'+datanum+'" id="qtcount'+menu.id+'" value="1" size = 1 name ="'+menu.price+'">'
-			result += '<button type="button" onclick="change(-1,' + menu.id + ');" id="minus' + menu.id + '">-</button>'
+			result += '<button type="button" class="custombtn" onclick="change(-1,' + menu.id + ');" id="minus' + menu.id + '">-</button>'
 	
-			result += '<button type="button" num ="' + datanum + '" id="delete' + menu.id + '" value="1" name="' + menu.price + '" onclick = "deleteRow(this);">X</button>';
+			result += '<button type="button" class="custombtn" num ="' + datanum + '" id="delete' + menu.id + '" value="1" name="' + menu.price + '" onclick = "deleteRow(this);">X</button>';
 			result += '</h3>';
 	
 			datanum++;
@@ -258,6 +279,10 @@
 			orderlist(num);
 		});
 	};
+	
+	$(document).ready(function(){
+		sendData(1);
+	});
 </script>
 
 <section class="pb_cover_v1 text-center" style="background-color: #fff5b9" id="section-table-order">

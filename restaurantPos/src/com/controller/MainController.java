@@ -47,12 +47,12 @@ public class MainController {
 		return mv;
 	}
 	@RequestMapping("/tablereceipt.mc")
-	public ModelAndView tablereceipt() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
-		mv.addObject("centerpage", "table/receipt");
+	public String tablereceipt() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
+//		mv.addObject("centerpage", "table/receipt");
 
-		return mv;
+		return "redirect:receiptlists.mc";
 	}
 
 }

@@ -64,7 +64,7 @@ public class MenuController {
 		obj.put("img3", m.getImg3());
 		ja.add(obj);
 
-		response.setContentType("text/json;charset=euc-kr");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out;
 		try {
 			out = response.getWriter();
@@ -77,7 +77,7 @@ public class MenuController {
 	
 	
 	//  메뉴 리스트 선택 사용자페이지
-	@RequestMapping("/menulist")
+	@RequestMapping("/menulist.mc")
 	public void menulist(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		ArrayList<Menu> list = null;
@@ -100,7 +100,7 @@ public class MenuController {
 			obj.put("img3", m.getImg3());
 			ja.add(obj);
 		}
-		response.setContentType("text/json;charset=euc-kr");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out;
 		try {
 			out = response.getWriter();
@@ -113,7 +113,7 @@ public class MenuController {
 	}
 	
 	//  고객 테이블별 대기중 메뉴 사용자페이지
-	@RequestMapping("/waitinglist")
+	@RequestMapping("/waitinglist.mc")
 	public void waitinglist(HttpServletRequest request,HttpServletResponse response) {
 	
 		ArrayList<Sales> list = null;
@@ -152,7 +152,7 @@ public class MenuController {
 	//-----------------------------------------------------------밑에부터 어드민페이지
 	
 	//  어드민 페이지 대기중 메뉴
-	@RequestMapping("/waitinglistadmin")
+	@RequestMapping("/waitinglistadmin.mc")
 	public void waitinglist(HttpServletResponse response) {
 
 		ArrayList<Sales> list = null;
@@ -170,13 +170,13 @@ public class MenuController {
 			JSONObject obj = new JSONObject();
 			obj.put("id", s.getId());
 			obj.put("menu_id", s.getMenu_id());
-			obj.put("receipt_id", s.getReceipt_id());
+			obj.put("tab_id", s.getTab_id());
 			obj.put("qt", s.getQt());
 			obj.put("s_service", s.getS_service());
 			obj.put("s_price", s.getS_price());
 			ja.add(obj);
 		}
-		response.setContentType("text/json;charset=euc-kr");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out;
 		try {
 			out = response.getWriter();

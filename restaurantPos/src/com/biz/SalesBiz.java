@@ -58,7 +58,7 @@ public class SalesBiz implements Biz<String, Sales> {
 
 	@Override
 	public ArrayList<Sales> search(Object obj) throws Exception {
-		return null;
+		return dao.search(obj);
 	}
 
 	

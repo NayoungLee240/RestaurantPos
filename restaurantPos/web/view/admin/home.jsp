@@ -61,7 +61,7 @@ h1{
 				function(index, menu) {
 					var result = '';
 					result += '<tr id=' + menu.id + ' onclick="delwaiting(this.id)"> <td> '
-							+ menu.receipt_id + '</td>';
+							+ menu.tab_id + '</td>';
 					result += '<td> ' + menu.menu_id + '</td>';
 					result += '<td> ' + menu.qt + '</td> </tr>';
 
