@@ -90,9 +90,9 @@ table td{
 							var result = '';
 							result += '<h3> <a type="button" href="javascript:void(0);"  id="'+menu.name+'" value="'+menu.price+'" num ="';
 							result += menu.id + '" rel ="'+menu.img1+'" >';
-							result += '<img src="img/foods/' + menu.img1 + ' "></a><br>';
-							result += menu.name + ',  가격 = ' + menu.price;
-							result += '</h3>';
+							result += '<img src="img/foods/' + menu.img1 + ' "><p style="display:inline-block;">';
+							result += menu.name + '<br>  가격 = ' + menu.price;
+							result += '</p></a></h3>';
 							$('#menu').append(result);
 	
 						});
