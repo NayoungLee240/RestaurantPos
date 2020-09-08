@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <style>
@@ -28,17 +29,18 @@
 
 #search{
 	display: block;
-	margin-top:120px;
+	margin-top:70px;
 }
 h2{
 	font-size: 22px;
 	margin:0 3px;
 }
 #srch_r{
+	text-align:left;
 	margin-top: 10px;
 	display: block;
 	background: white;
-	height: 100px;
+	height: 150px;
 	border: 2px solid gray;
 	overflow: auto;
 }
@@ -78,35 +80,69 @@ h2{
 </style>
 <script>
 
-	// 주문목록 출력
-function display(datas){
-
-	$(datas).each(function(index,menu){
-		var result = '';
-		result += '<h3> '+menu.menu_id + '  ' + menu.qt+'개 </h3>';
+	// 주문목록 출력(서형태)
+	function display(datas){
+	
+		$(datas).each(function(index,menu){
+			var result = '';
+			result += '<h3> '+menu.menu_id + '  ' + menu.qt+'개 </h3>';
+			
+			$('#orderdiv').append(result);
+	 });
+	};
+// 검색한 내용 출력 (최재림)
+	function searchDisplay(data){
+		$(data.documents).each(function(index,add){
+			var result = '';
+			result += '<p style="color:black;">'+add.title+' '+add.contents+'</p>'; //document name(정해진 값! 바꿀 수X) = title-본문제목, contents-본문 내용
+			$('#srch_r').append(result);
+			
+		});
 		
-		$('#orderdiv').append(result);
- });
-};
+	};
+	//웹 검색 내용 받아오기(최재림)
+	function getData(){
+		var urlstr = 'https://dapi.kakao.com/v2/search/web';	
+		var srch = $('#srch_i[name="srch"]').val();  //srch=search 줄임
+		if(srch!=''){
+			$.ajax({
+				method:'GET',
+				url:urlstr,
+				headers:{'Authorization':'KakaoAK 26e6df87e0b209a73bde4bdcb47d3e95'}, // 카카오 rest API 키값 바꿔주세요
+				data:{'query':srch},
+				success:function(data){
+					searchDisplay(data);
+				},
+				error:function(){
+					alert('error g');
+				}
+			});
+		};
+	};
+	//(최재림)
+	function searchbutton(){
+		$('#srch_r').empty(); // 이전에 검색해서 나온 검색내용 지우기
+		getData();
+	}
 
 
 	// 사용자 주문목록 데이터 가지고와서 출력
-$(document).ready(function(){
-
-	$.ajax({
-		url:'waitinglist.mc',
-		async:false,
-		dataType:"json",
-		success:function(result){
-			display(result);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(errorThrown);
-			alert(textStatus);
-
-		}
+	$(document).ready(function(){
+		//(서형태)
+		$.ajax({
+			url:'waitinglist.mc',
+			async:false,
+			dataType:"json",
+			success:function(result){
+				display(result);
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert(errorThrown);
+				alert(textStatus);
+	
+			}
+		});
 	});
-});
 
 </script>
 
@@ -114,13 +150,13 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-sm-4" style="padding-top: 430px">
-				<a href="#" rol="button" id="callbtn"><img src="img/bell.png"></a>
+				<a href="#" role="button" id="callbtn"><img src="img/bell.png"></a>
 			</div>
 			<div class="col-sm-4" style="padding-top: 150px">
 				<p><a href="tableorder.mc" role="button" class="custombtn" id="orderbtn">주문하기</a></p>
 				<p><a href="tablebull.mc" role="button" class="custombtn" id="bullbtn">낙서하기</a></p>
 				<div id="search">
-					<h2 class="row"><input class="col-9" id="srch_i" type="text" name="srch"><button class="col-3" id="srch_b">검색</button></h2>
+					<h2 class="row"><input class="col-9" id="srch_i" type="text" name="srch" value=""><button style="border:0; font-size:20px;" class="col-3 custombtn" id="srch_b" onclick="searchbutton()">검색</button></h2>
 					<div id="srch_r"></div>
 				</div>
 			</div>

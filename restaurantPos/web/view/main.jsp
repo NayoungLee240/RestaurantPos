@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="assets/css/helpers.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/restaurant.css">
+    
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
 <style>
 *{
 	font-family: 'Do Hyeon', sans-serif;
@@ -53,7 +57,7 @@ nav{
 }
 </style>
 </head>
-  
+ <script src="js/weather.js"></script>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
     <div class="probootstrap-loader"></div>
@@ -70,12 +74,16 @@ nav{
       				<img src="img/back.png"></a>
       		</c:when>
       		<c:when test="${centerpage eq 'table/bull'}">
-      			<a id="backbutton" href="tablehome.mc">
-      				<img src="img/back.png"></a>
+      			<a class ="navbar-brand" id="backbutton" href="tablehome.mc">
+      				<img class="light" src="img/back.png"></a>
+      			<a class ="navbar-brand" id="backbutton" href="tablehome.mc">
+      				<img class="dark" src="img/back-dark.png"></a>
       		</c:when>
       		<c:otherwise>
-      			<a id="backbutton" href="javascript:history.back(-1)">
-      				<img src="img/back.png"></a>
+      			<a class ="navbar-brand" id="backbutton" href="javascript:history.back(-1)">
+      				<img class="light" src="img/back.png"></a>
+      			<a class ="navbar-brand" id="backbutton" href="javascript:history.back(-1)">
+      				<img class="dark" src="img/back-dark.png"></a>
       		</c:otherwise>
       	</c:choose>
       	

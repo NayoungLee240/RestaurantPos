@@ -137,7 +137,7 @@ public class MenuController {
 			obj.put("s_price", s.getS_price());
 			ja.add(obj);
 		}
-		response.setContentType("text/json;charset=euc-kr");
+		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out;
 		try {
 			out = response.getWriter();
