@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.dao.SalesDao;
 import com.frame.Biz;
 import com.frame.Dao;
 import com.vo.Sales;
@@ -60,7 +60,13 @@ public class SalesBiz implements Biz<String, Sales> {
 	public ArrayList<Sales> search(Object obj) throws Exception {
 		return dao.search(obj);
 	}
+	
+	@Resource(name = "salesdao")
+	SalesDao sdao;
 
+	public ArrayList<Sales> searchReceipt(String k) throws Exception {
+		return sdao.searchreceipt(k);
+	}
 	
 	
 

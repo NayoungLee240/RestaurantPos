@@ -60,14 +60,12 @@ public class ReceiptBiz implements Biz<String, Receipt> {
 	public ArrayList<Receipt> search(Object obj) throws Exception {
 		return null;
 	}
-
+	
 	@Resource(name = "receiptdao")
 	ReceiptDao receiptdao;
 
 	public String getreceiptid() throws Exception {
 		return receiptdao.getreceiptid();
 	}
-
-
 
 }

@@ -56,8 +56,9 @@ nav{
 	color: #d3cb98;
 }
 </style>
+<script src="js/weather.js"></script>
+
 </head>
- <script src="js/weather.js"></script>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
     <div class="probootstrap-loader"></div>
@@ -110,13 +111,13 @@ nav{
 		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
 		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
 		                <div class="light"> 
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo.png" alt="Instant Logo">
-		          	</div>
-		          	<div class="dark">
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo-dark.png" alt="Instant Logo">
-		          	</div>
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo.png" alt="Instant Logo">
+			          	</div>
+			          	<div class="dark">
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo-dark.png" alt="Instant Logo">
+			          	</div>
 		              </a>
 		            </li>
 		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablelogin.mc">Table</a></li>
@@ -131,13 +132,13 @@ nav{
 		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
 		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
 		                <div class="light"> 
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo.png" alt="Instant Logo">
-		          	</div>
-		          	<div class="dark">
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo-dark.png" alt="Instant Logo">
-		          	</div>
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo.png" alt="Instant Logo">
+			          	</div>
+			          	<div class="dark">
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo-dark.png" alt="Instant Logo">
+			          	</div>
 		              </a>
 		            </li>
 		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="adminhome.mc">My Restaurant</a></li>
@@ -152,13 +153,13 @@ nav{
 		            <li class="nav-item logo-center d-xl-block d-lg-none d-md-none d-sm-none d-none">
 		              <a class="nav-link text-uppercase pb_letter-spacing-2" href="#">
 		                <div class="light"> 
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo.png" alt="Instant Logo">
-		          	</div>
-		          	<div class="dark">
-		        		<img src="img/weather/sunny.png" class="weather">
-		          		<img src="img/logo-dark.png" alt="Instant Logo">
-		          	</div>
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo.png" alt="Instant Logo">
+			          	</div>
+			          	<div class="dark">
+			        		<img src="img/weather/sunny.png" class="weather">
+			          		<img src="img/logo-dark.png" alt="Instant Logo">
+			          	</div>
 		              </a>
 		            </li>
 		            <li class="nav-item"><a class="nav-link pb_letter-spacing-2" href="tablehome.mc">Order</a></li>

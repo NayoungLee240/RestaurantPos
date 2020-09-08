@@ -35,7 +35,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
 		mv.addObject("centerpage", "table/home");
-
+		
 		return mv;
 	}
 	@RequestMapping("/tableorder.mc")

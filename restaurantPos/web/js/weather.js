@@ -2,7 +2,7 @@
  * 
  */
 
-	function searchDisplay(data){
+	function weatherDisplay(data){
 		$(data.weather).each(function(index,val){
 			var result = '';
 			result += val.icon; // 날씨 아이콘 코드 
@@ -27,11 +27,12 @@
 				$(".weather").attr("src","img/weather/cloudy.png");
 			}
 		});
+				$(".weather").attr("src","img/weather/cloudy.png");
 		
 	};
 	
 	// 날씨 내용 받아오기 *키 값 바꾸기
-	function getData(){
+	function getweatherData(){
 		var urlstr = 'https://api.openweathermap.org/data/2.5/weather';	
 		var key = '78d1d5190dbeb7c99f48441f87367235';
 		
@@ -45,7 +46,7 @@
 				'units':'metric'
 				},
 			success:function(data){
-				searchDisplay(data);
+				weatherDisplay(data);
 			},
 			error:function(){
 				alert('error g');
@@ -53,7 +54,7 @@
 		});
 	};
 	$(document).ready(function(){
-		getData();
+		getweatherData();
 	}); 
 	
 	

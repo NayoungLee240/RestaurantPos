@@ -38,8 +38,7 @@ public class TableController {
 		return mv;
 	}
 	@RequestMapping("/tableloginimpl.mc")
-	public String tableloginimpl(HttpServletRequest request, String id) {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView tableloginimpl(HttpServletRequest request, String id) {
 		
 		Tab table = null;
 		
@@ -52,10 +51,11 @@ public class TableController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");//자동으로 .jsp를 붙여서 실행
 		mv.addObject("centerpage", "table/home");
 
-		return "redirect:tablehome.mc";
+		return mv;
 	}
 	@RequestMapping("/tablelogout.mc")
 	public String tablelogout(HttpServletRequest request) {

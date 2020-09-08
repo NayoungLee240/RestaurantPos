@@ -103,7 +103,7 @@ public class ReceiptController {
 
 		try {
 			receipt = biz.get(getreceiptid);
-			list = salesbiz.search(getreceiptid);
+			list = salesbiz.searchreceipt(getreceiptid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

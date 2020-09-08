@@ -81,7 +81,7 @@ h2{
 <script>
 
 	// 주문목록 출력(서형태)
-	function display(datas){
+	function displaySales(datas){
 	
 		$(datas).each(function(index,menu){
 			var result = '';
@@ -101,7 +101,7 @@ h2{
 		
 	};
 	//웹 검색 내용 받아오기(최재림)
-	function getData(){
+	function getSearchData(){
 		var urlstr = 'https://dapi.kakao.com/v2/search/web';	
 		var srch = $('#srch_i[name="srch"]').val();  //srch=search 줄임
 		if(srch!=''){
@@ -122,7 +122,7 @@ h2{
 	//(최재림)
 	function searchbutton(){
 		$('#srch_r').empty(); // 이전에 검색해서 나온 검색내용 지우기
-		getData();
+		getSearchData();
 	}
 
 
@@ -134,7 +134,7 @@ h2{
 			async:false,
 			dataType:"json",
 			success:function(result){
-				display(result);
+				displaySales(result);
 			},
 			error: function(jqXHR, textStatus, errorThrown){
 				alert(errorThrown);
