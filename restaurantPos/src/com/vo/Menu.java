@@ -1,5 +1,7 @@
 package com.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Menu {
 
 	private String id;
@@ -10,6 +12,7 @@ public class Menu {
 	private String img1;
 	private String img2;
 	private String img3;
+	MultipartFile mf; 
 	
 	
 	public Menu() {
@@ -161,18 +164,23 @@ public class Menu {
 		this.img3 = img3;
 	}
 
+	
+	public MultipartFile getMf() {
+		return mf;
+	}
 
+	
+	public void setMf(MultipartFile mf) {
+		this.mf = mf;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Menu [id=" + id + ", name=" + name + ", price=" + price + ", tsales=" + tsales + ", category="
-				+ category + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + "]";
+				+ category + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + ", mf=" + mf + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 }

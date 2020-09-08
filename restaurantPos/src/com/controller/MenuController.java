@@ -202,7 +202,73 @@ public class MenuController {
 		return "redirect:loginimpl.mc";
 	}
 	
+	@RequestMapping("/editmenu.mc")
+	public String editmenu(Menu editmenudata)  {
+
+
+		String id = editmenudata.getId();
+		String name = editmenudata.getName();
+		int price = editmenudata.getPrice();
+		int category = editmenudata.getCategory();
+		String img1= editmenudata.getImg1();
+
+		String newimgname = editmenudata.getMf().getOriginalFilename();
+
+		if(img1 != newimgname && newimgname.equals("") ) {
+		
+			Menu menu1 =new Menu(id,name,price,category,img1);
+			try {
+				menubiz.update(menu1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+			Menu menu2 = new Menu(id,name,price,category,newimgname);
+			try {
+				menubiz.update(menu2);
+				Util.saveFile(editmenudata.getMf());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "redirect:menu.mc";
+	};
+
 	
+	@RequestMapping("/addmenu.mc")
+	public String addmenu(Menu addmenudata)  {
+
+		String id = addmenudata.getId();
+		String name = addmenudata.getName();
+		int price = addmenudata.getPrice();
+		int category = addmenudata.getCategory();
+		String img1= addmenudata.getImg1();
+		System.out.println(addmenudata);
+		System.out.println(img1);
+		String newimgname = addmenudata.getMf().getOriginalFilename();
+		
+		if(! newimgname.equals("") ) {
+			Menu menu2 = new Menu(id,name,price,category,newimgname);
+			try {
+				menubiz.insert(menu2);
+				Util.saveFile(addmenudata.getMf());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+			Menu menu1 =new Menu(id,name,price,category,img1);
+			try {
+				menubiz.insert(menu1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return "redirect:menu.mc";
+	};
+
 	
 	
 }
