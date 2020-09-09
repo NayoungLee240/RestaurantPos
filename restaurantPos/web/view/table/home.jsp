@@ -124,49 +124,7 @@ h2{
 		$('#srch_r').empty(); // 이전에 검색해서 나온 검색내용 지우기
 		getSearchData();
 	}
-	//웹소켓
-	var url="ws://localhost:80/restaurantPos/web/view/admin/hom.jsp";
-
-	function callWebSocket(){
-		ws = new WebSocket(url);
-		ws.onopen=function(event){onOpen(event)};
-		ws.onclose=function(event){onClose(event)};
-		ws.onmessage=function(event){onMessage(event)};
-		ws.onerror=function(event){onError(event)};
-	}
-	function init_socket(){
-		callWebSocket();
-	}
-	function onOpen(event){
-		alert('접속 성공');
-		ws.send('보내는 메시지');
-	}
-	function onClose(event){
-		alert('접속 종료');
-	}
-	function onMessage(event){
-		alert('수신 메시지:'+event.data);
-		ws.close();
-	}
-	function onError(event){
-		alert('에러');
-	}
-	window.addEventListener("load", init_socket, false);
 	
-	//(이나영)
-	function callAdmin(){
-		alert('호출중...');
-		$.ajax({
-			url:'calladmin.mc?id='+${logintable.id },
-			async:false,
-			dataType:"json",
-			success:function(){
-			},
-			error: function(){
-				alert('호출 실패');
-			}
-		});
-	}
 
 	// 사용자 주문목록 데이터 가지고와서 출력
 	$(document).ready(function(){
