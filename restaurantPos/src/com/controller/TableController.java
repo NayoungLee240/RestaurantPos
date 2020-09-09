@@ -114,4 +114,15 @@ public class TableController {
 		}
 		return "redirect:tabledata.mc";
 	}
+	@RequestMapping("deletetable.mc")
+	public String deletetable(String id) {
+		
+		try {
+			tabbiz.remove(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:tabledata.mc";
+	}
 }

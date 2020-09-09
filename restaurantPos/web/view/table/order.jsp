@@ -252,8 +252,6 @@
 			menulist.push(menu);
 			menulist[datanum].tsales = 1;
 			
-	
-			
 			var result = '';
 			result += '<h3 id="'+menu.id+'">';
 			result += menu.name + '  ' + menu.price+' ';
@@ -275,8 +273,6 @@
 			total();
 		});
 	};
-
-
 	
 	/*주문목록에  display에서 이미지 클릭하면 Id 값이 넘어온다 데이터 가지고옴*/
 	function orderlist(id) {

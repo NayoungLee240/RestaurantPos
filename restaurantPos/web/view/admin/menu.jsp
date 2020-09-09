@@ -92,7 +92,7 @@ table td{
 							result += menu.id + '" rel ="'+menu.img1+'" >';
 							result += '<img src="img/foods/' + menu.img1 + ' "><p style="display:inline-block;">';
 							result += menu.name + '<br>  가격 = ' + menu.price;
-							result += '</p></a></h3>';
+							result += '</p></a><a type="button" href="deletemenu.mc?id='+menu.id+'" class="custombtn">del</a></h3>';
 							$('#menu').append(result);
 	
 						});

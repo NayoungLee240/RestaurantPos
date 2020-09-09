@@ -201,6 +201,15 @@ public class MenuController {
 		
 		return "redirect:loginimpl.mc";
 	}
+	@RequestMapping("/deletemenu.mc")
+	public String deletemenu(String id) {
+		try {
+			menubiz.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:menu.mc";
+	}
 
 	@RequestMapping("/editmenu.mc")
 	public String editmenu(HttpServletRequest request, Menu editmenudata)  {

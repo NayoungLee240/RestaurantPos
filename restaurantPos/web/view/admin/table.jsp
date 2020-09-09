@@ -51,7 +51,8 @@ table td{
 				<h1>테이블</h1>
 				<div id="tables">
 					<c:forEach var="t" items="${tabledatas }">
-						<h3><a type="button" href="javascript:void(0);" onclick="choose('${t.id }','${t.pwd }',${t.name },${t.num });" >ID: ${t.id }, PWD: ${t.pwd }, 이름(번호): ${t.name }, 수용인원: ${t.num }</a></h3>
+						<h3><a type="button" href="javascript:void(0);" onclick="choose('${t.id }','${t.pwd }',${t.name },${t.num });" >ID: ${t.id }, PWD: ${t.pwd }, 이름(번호): ${t.name }, 수용인원: ${t.num }</a>
+							<a type="button" href="deletetable.mc?id=${t.id }" class="custombtn">del</a></h3>
 					</c:forEach>
 				</div>
 				<div>

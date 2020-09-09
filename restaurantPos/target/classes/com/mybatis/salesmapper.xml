@@ -16,7 +16,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE SALES SET S_SERVICE=2 WHERE ID=#{id}
 	</delete>
 	
-		
 	<select id="select" parameterType="String" 
 	resultType="sales">
 		SELECT * FROM SALES WHERE ID = #{k}
