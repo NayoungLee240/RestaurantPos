@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="selectall" resultType="sales">
 		<![CDATA[
-		SELECT * FROM SALES WHERE 1=1 AND S_SERVICE = 1  
+		SELECT * FROM SALES WHERE 1=1 AND S_SERVICE = 1 ORDER BY 1
 		]]>
 	</select>
 	
@@ -34,11 +34,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 		
 	<select id="search" resultType="sales">
-			SELECT * FROM SALES WHERE TAB_ID =#{obj} AND S_SERVICE = 1
+			SELECT * FROM SALES WHERE TAB_ID =#{obj} AND S_SERVICE = 1 ORDER BY 1
 	</select>
 	
 	<select id="searchreceipt" resultType="sales">
-			SELECT * FROM SALES WHERE RECEIPT_ID =#{k} AND S_SERVICE = 1
+			SELECT * FROM SALES WHERE RECEIPT_ID =#{k} AND S_SERVICE = 1 ORDER BY 1
 	</select>
 
 	

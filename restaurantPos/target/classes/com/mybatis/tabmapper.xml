@@ -17,11 +17,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="select" parameterType="String" resultType="tab">
-		SELECT * FROM TAB WHERE ID=#{k}	
+		SELECT * FROM TAB WHERE ID=#{k}
 	</select>
 	
 	<select id="selectall" resultType="tab">
-		SELECT * FROM TAB WHERE ADMIN_ID IS NOT NULL
+		SELECT * FROM TAB WHERE ADMIN_ID IS NOT NULL ORDER BY 1
 	</select>
 	
 </mapper>
