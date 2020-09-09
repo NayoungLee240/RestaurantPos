@@ -32,6 +32,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<![CDATA[SELECT RECEIPT_SEQ.nextval, RECEIPT_SEQ.CURRVAL FROM DUAL]]>
 	</select>
 	
+	<select id="getdaytotal" parameterType="String" resultType="Integer" >
+		<![CDATA[SELECT SUM(TOTAL) FROM RECEIPT WHERE REGDATE LIKE '%/'||#{k}||'/%' GROUP BY REGDATE ORDER BY REGDATE]]>
+	</select>
 	
 </mapper>
 

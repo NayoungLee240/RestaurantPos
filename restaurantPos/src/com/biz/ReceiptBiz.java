@@ -67,5 +67,10 @@ public class ReceiptBiz implements Biz<String, Receipt> {
 	public String getreceiptid() throws Exception {
 		return receiptdao.getreceiptid();
 	}
+	
+	public Integer[] getdaytotal(String i) throws Exception {
+		return receiptdao.getdaytotal("i");
+	}
+
 
 }
