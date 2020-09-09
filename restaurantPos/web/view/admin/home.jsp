@@ -12,7 +12,6 @@ h1{
 	border: 1px solid gray;
 	overflow: auto;
 	text-align: left;
-	vertical-align: text-bottom;
 }
 #menu{
 	margin-top: 10px;
