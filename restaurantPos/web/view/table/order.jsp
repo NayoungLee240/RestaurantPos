@@ -153,53 +153,76 @@
 
 	/* 주문목록 해당 열 삭제, 총합계금액 빼기 dispalyorder Button에서 실행 */
 	function deleteRow(ths) {
-
+	
+		var deletelist = new Array();
+	
+		
 		var $ths = $(ths);
 		$ths.parents("h3").remove();
 
 		var price = $(ths).attr('name');
-		var deletenum = $(ths).attr('num');
+		var deletemenu = $(ths).attr('num');
 		var qt = $(ths).attr('value');
-
+	
 		var total = Number(price) * Number(qt);
-
-		menulist.splice(deletenum, 1); // 삭제되는 열의 해당하는 menulist 삭제
-		datanum--;
+		
+	
 		deletetotal = $('#right-div > h1 > span').html() - total;
 		$('#right-div > h1 > span').html(deletetotal);
+	
+		
+			/* menulist 를 toString화 해서 그중 아이디값이 있는 것을 찾음  */
+		for (var i=0; i <= menulist.length; i++) {
+			var stmenulist = JSON.stringify(menulist[i]);
+			var checklist = stmenulist.indexOf(deletemenu);	
+	
+			if(checklist != -1 ){
+			menulist.splice(i, 1);
+			datanum--;
+				}
+			};
 	}
 
 	
 	/*+ - 수량 조절 및 총 금액 변경 */
 	function change(num, id) {
 
-		var x = (document.getElementById("qtcount" + id).value);
+		var x = (document.getElementById("qtcount" + id).value); // 초기값 = 1 
 		var y = (Number(x) + Number(num));
-
-		var z = $("#delete" + id).attr('value'); //버튼값에도 value 추가 total 계산을 위하여
+		
+		var z = $("#delete" + id).attr('value'); //버튼값에도 value 추가 total 계산을 위하여 초기값 = 1
 		var bz = (Number(z) + Number(num));
 
-		var i = $("#delete" + id).attr('num'); // menulist tsale = 판매수량 체크하기 위해 
-
+		var chageid = $("#delete" + id).attr('num'); // menulist tsale = 판매수량 체크하기 위해  munu.id 값이 넘어온다.
+		
+	
 		if (y >= 1) {
 			document.getElementById("qtcount" + id).value = y;
-			$("#delete" + id).attr('value', bz);
+			$("#delete" + id).attr('value', bz);         // X 버튼값 value -> tsale  에 넣을거임
 
-			menulist[i].tsales = y; // 해당 메뉴의 tsales 값 변경 = 판매수량
-
-			var delqt = $('#qtcount' + id).attr('name');
-			deleteqt = Number($('#right-div > h1 > span').html())
-					+ Number(delqt) * Number(num);
-			$('#right-div > h1 > span').html(deleteqt);
-
-		} else {
+			/* menulist 를 toString화 해서 그중 아이디값이 있는 것을 찾음  */
+			for (var i=0; i <= menulist.length; i++) {
+				var stmenulist = JSON.stringify(menulist[i]);
+				var checklist = stmenulist.indexOf(chageid);	
+				
+						if(checklist != -1 ){
+							menulist[i].tsales = y; // 해당 메뉴의 tsales 값 변경 = 판매수량
+						
+							var delqt = $('#qtcount' + id).attr('name');    // menu 가격
+							deleteqt = Number($('#right-div > h1 > span').html())
+									+ Number(delqt) * Number(num);
+							$('#right-div > h1 > span').html(deleteqt);
+							
+							}else{	
+						
+								};
+			} 
+		}else{
 			document.getElementById("qtcount" + id).value = 1;
 			$('#plus' + id).attr('value') = 1;
 			menulist[i].tsales = 1;
-		}
-		;
+			}
 	};
-	
 
 	/*이미지 선택한 개체 주문목록란에 표시*/
 
@@ -212,8 +235,8 @@
 						+ Number($('#right-div > h1 > span')
 								.html());
 				$('#right-div > h1 > span').html(total);
-			}
-			;
+			};
+			
 			
 			
 			// 중복 있는지 검색
@@ -228,21 +251,23 @@
 			
 			menulist.push(menu);
 			menulist[datanum].tsales = 1;
+			
 	
+			
 			var result = '';
 			result += '<h3 id="'+menu.id+'">';
 			result += menu.name + '  ' + menu.price+' ';
 	
 			result += '<button type="button" class="custombtn" onclick="change(1,' + menu.id + ');" id="plus'+ menu.id + '" value="1" ">+</button>'
 			result += '<input type="text" num ="'+datanum+'" id="qtcount'+menu.id+'" value="1" size = 1 name ="'+menu.price+'">'
-			result += '<button type="button" class="custombtn" onclick="change(-1,' + menu.id + ');" id="minus' + menu.id + '">-</button>'
+			result += '<button type="button" class="custombtn"  onclick="change(-1,' + menu.id + ');" id="minus' + menu.id + '">-</button>'
 	
-			result += '<button type="button" class="custombtn" num ="' + datanum + '" id="delete' + menu.id + '" value="1" name="' + menu.price + '" onclick = "deleteRow(this);">X</button>';
+			result += '<button type="button" class="custombtn"  num ="' + menu.id +  '" id="delete' + menu.id + '" value="1" name="' + menu.price + '" onclick = "deleteRow(this);">X</button>';
 			result += '</h3>';
-	
+/* 			 menu.id +menu.name + menu.price+ + menu.tsale + menu.category + menu.img1 + menu.img2 + menu.img3 */
 			datanum++;
 			valuenum++;
-			
+
 			$('#order-list').append(result);
 			
 			var price = '';
@@ -250,6 +275,7 @@
 			total();
 		});
 	};
+
 
 	
 	/*주문목록에  display에서 이미지 클릭하면 Id 값이 넘어온다 데이터 가지고옴*/

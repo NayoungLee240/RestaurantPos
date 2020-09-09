@@ -201,9 +201,9 @@ public class MenuController {
 		
 		return "redirect:loginimpl.mc";
 	}
-	
+
 	@RequestMapping("/editmenu.mc")
-	public String editmenu(Menu editmenudata)  {
+	public String editmenu(HttpServletRequest request, Menu editmenudata)  {
 
 
 		String id = editmenudata.getId();
@@ -237,7 +237,7 @@ public class MenuController {
 
 	
 	@RequestMapping("/addmenu.mc")
-	public String addmenu(Menu addmenudata)  {
+	public String addmenu(HttpServletRequest request,Menu addmenudata)  {
 
 		String id = addmenudata.getId();
 		String name = addmenudata.getName();
@@ -267,7 +267,8 @@ public class MenuController {
 			
 		}
 		return "redirect:menu.mc";
-	};
+
+	}
 
 	
 	

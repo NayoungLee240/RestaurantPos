@@ -167,7 +167,7 @@ table td{
 				
 				<div>
 					<h3>수정하기</h3>
-					<form action="editmenu.mc" method="post">
+					<form enctype="multipart/form-data" action="editmenu.mc" method="post">
 						<table>
 							<thead><tr>
 								<td>ID</td><td>이름</td><td>카테고리</td><td>가격</td><td></td>
@@ -188,7 +188,7 @@ table td{
 						</table>
 					</form>
 					<h3>추가하기</h3>
-					<form action="addmenu.mc" method="post">
+					<form enctype="multipart/form-data" action="addmenu.mc" method="post">
 						<table>
 							<thead><tr>
 								<td>ID</td><td>이름</td><td>카테고리</td><td>가격</td><td></td>

@@ -27,7 +27,6 @@
 				$(".weather").attr("src","img/weather/cloudy.png");
 			}
 		});
-				$(".weather").attr("src","img/weather/cloudy.png");
 		
 	};
 	
