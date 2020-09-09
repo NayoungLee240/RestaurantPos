@@ -27,10 +27,12 @@ public class SalesController {
 	@RequestMapping("/salesgraph.mc")
 	public void salesgraph(HttpServletRequest request, HttpServletResponse response) {
 
+		String month = request.getParameter("month");
+		
 		Integer[] data = {};
 		
 		try {
-			data = rbiz.getdaytotal("09");
+			data = rbiz.getdaytotal(month);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

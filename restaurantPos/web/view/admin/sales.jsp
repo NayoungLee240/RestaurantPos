@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -56,14 +57,14 @@ h3{
 
 	};
 	
-	function changearraydate(getdata) {
+	function changearraydate(getdata, month) {
 		var newarr = new Array;
 		$(getdata).each(function (index, data){
-			newarr.push(data.data);
+			newarr.push(data.data/10000);
 		});
 		
 		var gdata = [{
-			name : '()월 매출',
+			name : month+'월 매출',
 			data :newarr
 		}];
 		gchart(gdata); 
@@ -73,7 +74,7 @@ h3{
 	
 	
 	
-	function getDatagChart() { 
+	function getDatagChart(month) { 
 		/* var rev = {daysaleslist.data} */
 		
 		$.ajax({
@@ -81,18 +82,14 @@ h3{
 			type:'GET',
 			async:false,
 			data: {
+				'month':month
 			},success:function(result){
-				changearraydate(result);
+				changearraydate(result, month);
 				
 			}
 		});
 		 
 	};
-	
-	$(document).ready(function() {
-			getDatagChart();
-	});
-	
 	//금일매출액
 	function total_display(datat) {
 		$(datat).each(function(index,daysaleslist){
@@ -104,15 +101,58 @@ h3{
 		
 	};
 	
+	
+	$(document).ready(function() {
+		var today = new Date();
+		var tnmonth = today.getMonth()+1;
+		var tmonth = new String(tnmonth);
+		if(tmonth.length == 1){ 
+			tmonth = "0" + tmonth; 
+		} 
+		getDatagChart(tmonth);
+		
+		$('#month-b').click(function(){
+			var mo = $('#monthval').text();
+			var m= Number(mo);
+			m = m-1;
+			var month = new String(m);
+			if(month.length == 1){ 
+				month = "0" + month; 
+			}
+			$('#monthval').empty();
+			$('#monthval').append(month);
+			getDatagChart(month);
+		});
+		$('#month-a').click(function(){
+			var mo = $('#monthval').text();
+			var m= Number(mo);
+			m = m+1;
+			if(m>tnmonth) {
+				m=tnmonth;
+			};
+			var month = new String(m);
+			if(month.length == 1){ 
+				month = "0" + month; 
+			}
+			$('#monthval').empty();
+			$('#monthval').append(month);
+			getDatagChart(month);
+		});
+	});
+	
+	
 </script>
 <section class="pb_section" style="background-color: #fff5b9" id="section-home">
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-sm-12" style="text-align: left">
 				<h1>매출 관리</h1>
-				<h3>월 별 <button class="month" id="month-b">◀</button><span> 8</span>월 <button class="month" id="month-a">▶</button></h3>
+				<!-- 현재년도 -->
+				<c:set var="now" value="<%=new java.util.Date()%>" />
+				<c:set var="sysMonth"><fmt:formatDate value="${now}" pattern="MM" /></c:set> 
+				<h3>월 별 <button class="month" id="month-b">◀</button><span id="monthval"> <c:out value="${sysMonth}" /></span>월 <button class="month" id="month-a">▶</button></h3>
 				<div id="p_chart"></div>
-				<h3>금일 매출액<br> : <span>0</span>원</h3>
+				<h3>금일 매출액<br> : <span>${sales }</span>원</h3>
 			</div>
 		</div>
 	</div>

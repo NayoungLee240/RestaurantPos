@@ -1,13 +1,17 @@
 package com.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dao.ReceiptDao;
 import com.frame.Biz;
 import com.vo.Tab;
 
@@ -57,11 +61,22 @@ public class AdminController {
 		mv.setViewName("main");
 		return mv;
 	}
+	@Autowired
+	ReceiptDao rbiz;
+	
 	@RequestMapping("/sales.mc")
 	public ModelAndView sales() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		String day = sdf.format(System.currentTimeMillis());
+		int sales=0;
+		try {
+			sales = rbiz.gettodaytotal(day);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main"); //자동으로 .jsp를 붙여서 실행
-//		mv.addObject("centerpage", "admin/loginfail");
+		mv.addObject("sales", sales);
 		mv.addObject("centerpage", "admin/sales");
 
 		return mv;

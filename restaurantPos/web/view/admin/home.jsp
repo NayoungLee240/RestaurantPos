@@ -11,6 +11,8 @@ h1{
 	height: 400px;
 	border: 1px solid gray;
 	overflow: auto;
+	text-align: left;
+	vertical-align: text-bottom;
 }
 #menu{
 	margin-top: 10px;
@@ -57,6 +59,8 @@ h1{
 
 	// 우측 주문목록에 데이터 세팅  
 	function display(datas) {
+		var tlist = new Array;
+		var tables = new Array;
 		$(datas).each(
 				function(index, menu) {
 					var result = '';
@@ -66,7 +70,27 @@ h1{
 					result += '<td> ' + menu.qt + '</td> </tr>';
 
 					$('#list-table > tbody').append(result);
+					
+					tables.push({'tab_id':menu.tab_id, 'menu_id':menu.menu_id, 'qt':menu.qt});
+					var a = 0;
+					for(var t=0;t<tlist.length;t++){
+						if(tlist[t]==menu.tab_id){
+							a=1;
+							break;
+						}
+					}
+					if(a==0) tlist.push(menu.tab_id);
 				});
+		$(tlist).each(function(index,tlist){
+			var result = '<div style="display:inline-block;border:1px solid gray;margin:5px;padding:10px;"><h3>'+tlist+'</h3>';
+			$(tables).each(function(i,tables){
+				if(tlist==tables.tab_id){
+					result += '<h4 style="text-align:right"> '+tables.menu_id+' X '+tables.qt+' <h4> ';
+				}
+			});
+			result+='</div>';
+			$('#tables').append(result);	
+		});
 	};
 
 	
@@ -125,7 +149,8 @@ h1{
 		<div class="row align-items-center justify-content-center">
 			<div class="col-md-9">
 				<h1>Table</h1>
-				<div id="tables"></div>
+				<div id="tables">
+				</div>
 				<div id="menu" class="row align-items-center justify-content-center">
 					<a class="custombtn" href="sales.mc">매출 관리</a>
 					<a class="custombtn" href="menu.mc">메뉴 관리</a>

@@ -10,4 +10,5 @@ import com.vo.Receipt;
 public interface ReceiptDao extends Dao<String, Receipt> {
 	public String getreceiptid () throws Exception;
 	public Integer[] getdaytotal(String k) throws Exception;
+	public Integer gettodaytotal(String k) throws Exception;
 }
