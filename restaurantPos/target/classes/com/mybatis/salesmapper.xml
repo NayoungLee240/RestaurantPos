@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.dao.SalesDao">
 
 	<insert id="insert" parameterType="sales">
-		INSERT INTO SALES VALUES (SALES_SEQ.NEXTVAL,#{menu_id},#{tab_id},#{receipt_id},#{qt},#{s_service},#{s_price})
+		INSERT INTO SALES VALUES (TO_CHAR(SALES_SEQ.NEXTVAL),#{menu_id},#{tab_id},#{receipt_id},#{qt},#{s_service},#{s_price})
 			<selectKey keyProperty="id" resultType="String" order="AFTER">
 			SELECT SALES_SEQ.CURRVAL FROM DUAL
 		</selectKey>

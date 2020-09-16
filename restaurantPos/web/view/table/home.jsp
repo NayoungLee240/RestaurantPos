@@ -150,7 +150,7 @@ h2{
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-sm-4" style="padding-top: 430px">
-				<a href="#" role="button" id="callbtn"><img src="img/bell.png"></a>
+				<!-- <a href="#" role="button" id="callbtn"><img src="img/bell.png"></a> -->
 			</div>
 			<div class="col-sm-4" style="padding-top: 150px">
 				<p><a href="tableorder.mc" role="button" class="custombtn" id="orderbtn">주문하기</a></p>
